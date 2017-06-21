@@ -47,6 +47,8 @@ def dummymd(dirname):
         pass
 
 class Baka:
+    """Бака — от слова «бакалавр», поэтому звучит гордо"""
+
     subdir = sys.argv[1]
     evenrow = True
 
