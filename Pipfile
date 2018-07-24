@@ -1,0 +1,5 @@
+[packages]
+transliterate = "*"
+mako = "*"
+
+[dev-packages]
