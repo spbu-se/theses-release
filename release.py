@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 #-*- coding: utf-8 -*-
 
-# pip install transliterate
 from transliterate import translit
 
 import glob
@@ -10,41 +9,13 @@ import sys
 import shutil
 import csv
 
-'''
-Этот чудо-скрипт понимает следующую структуру подкаталогов в текущем:
-
-Луцив Дмитирй Вадимович
-  L text.pdf
-  L slides.pdf
-  L code.zip
-Кириленко Яков Александрович
-  L text.pdf
-  L slides.pdf
-  L code.7z
-Полозов Виктор сергеевич
-  L text.pdf
-  L slides.pdf
-  L code.hyperlink
-Сартасов Станислав Юрьевич
-  L text.pdf
-  L slides.pdf
-  L code.txt
-
-code.hyperlink должен содержать единственную строчку со ссылкой
-
-code.txt -- комментарий на случай отсутствия кода, в духе "Код закрыт"
-
-+ titles.csv со строками вида (\t -- табуляция):
-Терехов Андрей Николаевич\tТехнология программирования встроенных систем реального времени
-
-Требуется параметр -- подкаталог для генерации, в который будут сложены файлы и на который будет ссылаться HTML.
-'''
 
 def dummymd(dirname):
     try:
         os.makedirs(dirname)
     except:
         pass
+
 
 class Baka:
     """Бака — от слова «бакалавр», поэтому звучит гордо"""
@@ -122,6 +93,7 @@ class Baka:
 
     def __str__(self):
         return self.dst_prefix
+
 
 titles = {}
 with open('titles.csv', 'r', encoding="utf-8-sig") as csvfile:
