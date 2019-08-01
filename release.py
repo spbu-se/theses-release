@@ -88,7 +88,7 @@ class Baka:
 
     @property
     def review_link(self):
-        return self.dst_prefix.replace('\\', '/') + "-testimonial.pdf"
+        return self.dst_prefix.replace('\\', '/') + "-review.pdf"
 
     def process(self):
         if os.path.isfile(os.path.join(self.src_folder, 'text.pdf')):
