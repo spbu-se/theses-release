@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+</head>
+<body>
+
+<table class="listing">
+    <thead>
+    <tr class="odd">
+        <th style="vertical-align: bottom;" rowspan="2">Выпускник</th>
+        <th style="vertical-align: bottom;" rowspan="2">Тема</th>
+        <th colspan="3">Материалы</th>
+        <th style="vertical-align: bottom;" rowspan="2">Отзыв</th>
+        <th style="vertical-align: bottom;" rowspan="2">Рецензия</th>
+    </tr>
+    <tr>
+        <th>Текст</th>
+        <th>Слайды</th>
+        <th>Код</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for baka in bakas %}
+        <tr class="{% if baka.evenrow %}even{% else %}odd{% endif %}">
+            <td>{{ baka.fio }}</td>
+            <td>{{ baka.title }}</td>
+            <td style="text-align: center;"><a href="{{ baka.text_link }}">&#x1F5BA;</a></td>
+            <td style="text-align: center;">{% if baka.has_slides %}
+                <a href="{{ baka.slides_link }}">&#x1F4C8;</a>
+                {% else %}&mdash;
+            {%  endif %}</td>
+            <td style="text-align: center;">{% if  baka.has_code_comment %}
+                    {{ baka.code_comment }}
+                {% elif baka.code_type %}
+                    <a href="{{ baka.code_link }}">&#x1F4BE;</a>
+                {% else %}&mdash;
+            {% endif %}</td>
+            {% if baka.has_testimonial %}
+                <td><a href="{{ baka.testimonial_link }}">{{ baka.supervisor }}</a></td>
+            {%  else %}<td style="text-align: center;">&mdash;</td>{% endif %}
+            {% if baka.has_review %}
+                <td><a href="{{ baka.review_link }}">{{ baka.reviewer }}</a></td>
+            {%  else %}<td style="text-align: center;">&mdash;</td>{% endif %}
+        </tr>
+    {%  endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>

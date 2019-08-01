@@ -1,4 +1,5 @@
 [packages]
-transliterate = "*"
+transliterate = ">=1.10.2"
+jinja2 = ">=2.10.1"
 
 [dev-packages]
